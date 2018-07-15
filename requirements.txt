@@ -1,0 +1,23 @@
+# for creating beautiful command line interfaces
+click==6.7
+
+# a microframework for Python
+Flask==1.0.2
+
+# to help the app run on heroku server
+gunicorn==19.9.0
+
+# helps to safely send data to untrusted environments
+itsdangerous==0.24
+
+# templating language for Python
+Jinja2==2.10
+
+# Safely add untrusted strings to HTML/XML markup
+MarkupSafe==1.0
+
+# WSGI(Web Server Gateway Interface) utility library for Python
+Werkzeug==0.14.1
+
+# Pep8 styling
+pylint==1.9.2

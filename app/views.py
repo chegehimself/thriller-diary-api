@@ -17,7 +17,7 @@ entries = ENTRY.all_entries()
 entries_bp = Blueprint('entries',__name__, url_prefix='/api/v1')
 
 # deal with single entry
-ent_bp = Blueprint('ent', __name__, url_prefix='api/v1')
+ent_bp = Blueprint('ent', __name__, url_prefix='/api/v1')
 
 @entries_bp.route('/', methods=['POST', 'GET'])
 def index():
@@ -38,12 +38,14 @@ def get_all_entries():
         response = {"status": "success", "entries": entries}
         return jsonify(response), 200
 
-@entries_bp.route('/entries', methods=['POST'])
+@ent_bp.route('/entries', methods=['POST'])
 def add_new_entry():
     """Add an entry"""
-    json_data = request.get_json()
-    title = json_data['title']
-    description = json_data['description']
+    # json_data = request.get_json()
+    title = str(request.data.get('title', '')).strip().lower()
+    description = str(request.data.get('description', ''))
+    # title = json_data['title']
+    # description = json_data['description']
     ENTRY.add_entry(title,description)
-    response = {"status": "success", "entry": json_data}
+    response = {"status": "success", "entry": {str(title):str(description)}}
     return jsonify(response), 201

@@ -30,3 +30,6 @@ flask-api
 
 # for testing coverage
 coveralls
+
+# for test coverage
+pytest-cov

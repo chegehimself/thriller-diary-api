@@ -24,3 +24,8 @@ class Entry(Resource):
         single_entry_holder['description'] = description
         single_entry_holder['created'] = str(date_created)
         self.entries.append(single_entry_holder)
+
+    def all_entries(self):
+        """Return available entries"""
+
+        return self.entries

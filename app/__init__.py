@@ -14,7 +14,8 @@ def create_app(config_name):
     app.config.from_pyfile('config.py')
 
     return app
-    
+
+# get global variable set by user in development environment  
 config_name = os.getenv('APP_SETTINGS')
 app = create_app(config_name)
 # register the blueprints

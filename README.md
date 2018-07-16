@@ -35,7 +35,7 @@ The following is a list of available endpoints in this application
 |EndPoint               | Functionality|
 | ------------------------------------ | ------------------------ |
 |GET /api/v1/entries                |Fetch all entries|
-|GET /api/v1/entries/<entryId>/     |Fetch a single entry|
+|GET /api/v1/entries/<int:entryId>/     |Fetch a single entry|
 |POST /api/v1/entries               |Create an entry|
 |PUT /api/v1/entries/<int:entryId>/ |Modify an entry|
 

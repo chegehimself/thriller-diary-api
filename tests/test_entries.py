@@ -29,9 +29,12 @@ class TestDiaryEntry(unittest.TestCase):
     	result = self.ent.add_entry("title", "some")
     	self.assertFalse(False, result)
 
-    def entry_add(self):
-        return self.client().get(self.entry_route, data=self.entry)
-
+    def test_get_all_entries(self):
+        req = self.client().post(self.entry_route, data=self.entry)
+        req_all =  self.client().get(self.entry_route)
+        self.assertEqual(req_all.status_code, 200)
+        self.assertIn('At Russia', str(req_all.data))
+        
 
     def test_entry_creation(self):
         """Test entry creation via post method"""

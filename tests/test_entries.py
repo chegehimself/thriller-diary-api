@@ -15,3 +15,8 @@ class TestDiaryEntry(unittest.TestCase):
         """returns True if entry addition was successful"""
         result = self.ent.add_entry("", "some good description")
         self.assertEqual(True, result)
+
+    def test_entry_adding_failure(self):
+    	"""returns False if an entry addition failed"""
+    	result = self.ent.add_entry("some")
+    	self.assertFalse(False, result)

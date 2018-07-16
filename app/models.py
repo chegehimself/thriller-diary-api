@@ -29,3 +29,4 @@ class Entry(Resource):
         """Return available entries"""
 
         return self.entries
+        

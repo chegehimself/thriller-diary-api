@@ -8,6 +8,9 @@ from flask import Flask, Blueprint, jsonify, request, make_response
 from app.models import Entry
 ENTRY = Entry()
 
+# call all available entries
+entries = ENTRY.all_entries()
+
 # create entries and a single entry Blueprint and
 # version the urls to have '/api/v1' prefix
 entries_bp = Blueprint('entries',__name__, url_prefix='/api/v1')
@@ -28,11 +31,11 @@ def index():
         return make_response(jsonify(welcome_message)), 200
 
 @entries_bp.route('/entries', methods=['GET'])
-def entries():
+def get_all_entries():
     """Retrives all Entries"""
     if request.method == 'GET':
-        return "OK! entries"
-
+        response = {"status": "success", "entries": entries}
+        return jsonify(response), 200
 
 @ent_bp.route('/entries', methods=['POST'])
 def add_new_entry():

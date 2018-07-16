@@ -2,13 +2,10 @@
 
 # for running the server
 
-# import app and entries blueprint
-from app import app
-from app.views import entries_bp, ent_bp
+# import app and blueprints
 
-# register entry Blueprint
-app.register_blueprint(ent_bp)
-app.register_blueprint(entries_bp)
+import os
+from app import app
 
 # start the app in debugging mode
 if __name__ == '__main__':

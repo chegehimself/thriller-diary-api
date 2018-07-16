@@ -27,3 +27,6 @@ flask-restful
 
 # provides an implementation of browsable APIs
 flask-api
+
+# for testing coverage
+coveralls

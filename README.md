@@ -34,10 +34,10 @@ The following is a list of available endpoints in this application
 
 |EndPoint | Functionality|
 | ------------ | ------------ |
-|GET api/v1/entries |Fetch all entries
+|GET api/v1/entries |Fetch all entries|
 |PUT api/v1/entries/<entryId> |Fetch a single entry|
-|POST api/v1/entries|Create an entry
-|GET api/v1/entries/<entryId> |Modify an entry
+|POST api/v1/entries|Create an entry|
+|GET api/v1/entries/<entryId> |Modify an entry|
 
 # Testing
 - comming soon...

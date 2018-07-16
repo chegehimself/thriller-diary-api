@@ -9,10 +9,9 @@ from flask_restful import Resource
 class Entry(Resource):
     """Add new entry"""
 
-
     # constructor
     def __init__(self):
-        # all entries placeholders
+        # all entries placeholder
         self.entries = []
 
     def add_entry(self, title, description):
@@ -25,4 +24,3 @@ class Entry(Resource):
         single_entry_holder['description'] = description
         single_entry_holder['created'] = str(date_created)
         self.entries.append(single_entry_holder)
-        

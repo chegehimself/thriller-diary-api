@@ -16,6 +16,7 @@ class TestDiaryEntry(unittest.TestCase):
         self.ent = Entry()
         self.app = create_app(config_name="testing")
         self.client = self.app.test_client
+        self.entry = {'title':'At Russia', 'description':'Me and my three friends decided ...'}
         self.entry_route = 'api/v1/entries/'
 
     def test_entry_adding_success(self):
@@ -36,7 +37,6 @@ class TestDiaryEntry(unittest.TestCase):
         """Test entry creation via post method"""
         # bind the app to the current context
         with self.app.app_context():
-            self.entry = {'title':'At Russia', 'description':'Me and my three friends decided ...'}
             req = self.client().post(self.entry_route, data=self.entry)
             self.assertEqual(req.status_code, 201)
             self.assertIn('At Russia',str(req.data))

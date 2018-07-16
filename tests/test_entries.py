@@ -30,7 +30,7 @@ class TestDiaryEntry(unittest.TestCase):
     	self.assertFalse(False, result)
 
     def entry_add(self):
-        return self.client().get(self.entry_route, headers=None, data=None)
+        return self.client().get(self.entry_route, data=self.entry)
 
 
     def test_entry_creation(self):

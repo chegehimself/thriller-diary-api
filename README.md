@@ -4,7 +4,7 @@ An online journal where users can pen down their thoughts and feelings. This is 
 
 # Status
 [![Build Status](https://travis-ci.org/james-chege/thriller-diary-api.svg?branch=master)](https://travis-ci.org/james-chege/thriller-diary-api) 
-[![Coverage Status](https://coveralls.io/repos/github/james-chege/thriller-diary-api/badge.svg?branch=master)](https://coveralls.io/github/james-chege/thriller-diary-api?branch=master) 
+[![Coverage Status](https://coveralls.io/repos/github/james-chege/thriller-diary-api/badge.svg?branch=ch-tests)](https://coveralls.io/github/james-chege/thriller-diary-api?branch=ch-tests)
 [![Maintainability](https://api.codeclimate.com/v1/badges/dcd92dcc85e867b53119/maintainability)](https://codeclimate.com/github/james-chege/thriller-diary-api/maintainability) 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bc05f653d4b3470b84a41ca252d68cbd)](https://www.codacy.com/app/james-chege/thriller-diary?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=james-chege/thriller-diary&amp;utm_campaign=Badge_Grade)
 

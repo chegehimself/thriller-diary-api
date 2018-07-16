@@ -3,7 +3,7 @@
 An online journal where users can pen down their thoughts and feelings. This is the implementation of the Restful API.
 
 # Status
-__Badge-build badge-coverage badge-codacy__
+[![Build Status](https://travis-ci.org/james-chege/thriller-diary-api.svg?branch=master)](https://travis-ci.org/james-chege/thriller-diary-api) __badge-coverage badge-codacy__
 
 __Live version: [coming soon ...]()__
 

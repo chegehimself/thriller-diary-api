@@ -24,3 +24,6 @@ pylint==1.9.2
 
 # provides the building blocks for creating a great REST API.
 flask-restful
+
+# provides an implementation of browsable APIs
+flask-api

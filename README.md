@@ -15,15 +15,15 @@ Fork this repository to your github account and clone from there(_NB: clone from
 
 __Install Dependencies__(_Note: This should be done in the created virtual environment_)
 ```py
-$ pip install -r requirements.txt
+ pip install -r requirements.txt
 ```
 __Set environment variable__
 ```py
-$ export APP_SETTINGS="development"
+ export APP_SETTINGS="development"
 ```
 
 __Start Server__
-```
+```py
 python run.py
 ```
 

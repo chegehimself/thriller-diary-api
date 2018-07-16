@@ -18,6 +18,11 @@ __Install Dependencies__(_Note: This should be done in the created virtual envir
 $ pip install -r requirements.txt
 ```
 
+__Set environment variable__
+```
+$ export APP_SETTINGS="development"
+```
+
 __Start Server__
 ```
 python run.py

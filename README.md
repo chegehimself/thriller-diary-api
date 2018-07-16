@@ -5,7 +5,7 @@ An online journal where users can pen down their thoughts and feelings. This is 
 # Status
 __Badge-build badge-coverage badge-codacy__
 
-__Live version: [comming soon ...]()__
+__Live version: [coming soon ...]()__
 
 ### Local Installation
 
@@ -14,11 +14,11 @@ Fork this repository to your github account and clone from there(_NB: clone from
 [Create a python Virtual environment and Activate it](https://virtualenv.pypa.io/en/stable/).A virtual environment is effective when working on multiple projects. Each project will have its own development enviroment.
 
 __Install Dependencies__(_Note: This should be done in the created virtual environment_)
-```
+```py
 $ pip install -r requirements.txt
 ```
 __Set environment variable__
-```
+```py
 $ export APP_SETTINGS="development"
 ```
 

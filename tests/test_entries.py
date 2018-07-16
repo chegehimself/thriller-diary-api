@@ -2,3 +2,16 @@
 
 # For unit testing of entries
 
+# standard unittest
+import unittest
+# import Entry classe from models
+from app.models import Entry
+
+class TestDiaryEntry(unittest.TestCase):
+    """test for successful and unsuccessful entry addition"""
+    def setUp(self):
+        self.ent = Entry()
+    def test_entry_adding_success(self):
+        """returns True if entry addition was successful"""
+        result = self.ent.add_entry("", "some good description")
+        self.assertEqual(True, result)

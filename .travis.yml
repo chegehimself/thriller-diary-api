@@ -8,6 +8,9 @@ python:
 # dependencies installation
 install:
   - pip install -r requirements.txt
+# add environment variable
+  before_script:
+  - export APP_SETTINGS="development"
 # start test
 script:
    py.test tests/test_entries.py

@@ -21,3 +21,6 @@ Werkzeug==0.14.1
 
 # Pep8 styling
 pylint==1.9.2
+
+# provides the building blocks for creating a great REST API.
+flask-restful

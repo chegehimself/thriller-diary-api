@@ -17,7 +17,7 @@ def index():
 
         # the following is a welcoming message (at the landing page)
         welcome_message = {"Message": [{
-                                    "Welcome":"Hey! welcome thriller diary api"
+                                    "Welcome":"Hey! welcome to thriller diary api"
                                     },
                                   ]}
         return make_response(jsonify(welcome_message)), 200

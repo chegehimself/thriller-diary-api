@@ -41,5 +41,5 @@ def add_new_entry():
     title = json_data['title']
     description = json_data['description']
     ENTRY.add_entry(title,description)
-    response = {"status": "success", "entry": json_data}, 201
-    return response
+    response = {"status": "success", "entry": json_data}
+    return jsonify(response), 201

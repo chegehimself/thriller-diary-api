@@ -1,3 +1,17 @@
 # .travis.yml 
 
 # for auto testing
+
+language: python
+python:
+  - "3.5"
+# dependencies installation
+install:
+  - pip install -r requirements.txt
+# start test
+script:
+   py.test tests/test_entries.py
+
+# send info to coveralls
+after_success:
+   coveralls

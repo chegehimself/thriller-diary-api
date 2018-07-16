@@ -37,6 +37,6 @@ class TestDiaryEntry(unittest.TestCase):
         # bind the app to the current context
         with self.app.app_context():
             self.entry = {'title':'At Russia', 'description':'Me and my three friends decided ...'}
-            req = self.client().post(self.entry_route, data=json.dumps(self.entry))
+            req = self.client().post(self.entry_route, data=self.entry)
             self.assertEqual(req.status_code, 201)
-            self.assertIn('success',str(req.data))
+            self.assertIn('At Russia',str(req.data))

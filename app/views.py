@@ -42,7 +42,7 @@ def get_all_entries():
 def add_new_entry():
     """Add an entry"""
     # json_data = request.get_json()
-    title = str(request.data.get('title', '')).strip().lower()
+    title = str(request.data.get('title', '')).strip()
     description = str(request.data.get('description', ''))
     # title = json_data['title']
     # description = json_data['description']

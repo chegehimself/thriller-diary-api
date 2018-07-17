@@ -26,7 +26,7 @@ class TestDiaryEntry(unittest.TestCase):
 
     def test_entry_adding_failure(self):
     	"""returns False if an entry addition failed"""
-    	result = self.ent.add_entry("title", "some")
+    	result = self.ent.add_entry("title", "")
     	self.assertFalse(False, result)
 
     def test_get_all_entries(self):

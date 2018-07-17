@@ -18,6 +18,7 @@ class TestDiaryEntry(unittest.TestCase):
         self.client = self.app.test_client
         self.entry = {'title':'At Russia', 'description':'Me and my three friends decided ...'}
         self.entry_route = 'api/v1/entries/'
+        self.single_entry_route = 'api/v1/entries/1'
 
     def test_entry_adding_success(self):
         """returns True if entry addition was successful"""
@@ -49,3 +50,10 @@ class TestDiaryEntry(unittest.TestCase):
         """ Test Landing page message"""
         req =  self.client().get('/api/v1/')
         self.assertEqual(req.status_code, 200)
+
+    def test_fetch_single_entry(self):
+        """ Test fetch single entry """
+        req = self.client().post(self.entry_route, data=self.entry)
+        req_single =  self.client().get(self.single_entry_route)
+        self.assertEqual(req_single.status_code, 200)
+        self.assertIn('At Russia', str(req_single.data))

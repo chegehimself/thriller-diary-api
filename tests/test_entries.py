@@ -17,6 +17,7 @@ class TestDiaryEntry(unittest.TestCase):
         self.app = create_app(config_name="testing")
         self.client = self.app.test_client
         self.entry = {'title':'At Russia', 'description':'Me and my three friends decided ...'}
+        self.entry_new = {'title':'At Beach', 'description':'Me and my three friends decided ...'}
         self.entry_route = 'api/v1/entries/'
         self.single_entry_route = 'api/v1/entries/1'
 
@@ -57,3 +58,11 @@ class TestDiaryEntry(unittest.TestCase):
         req_single =  self.client().get(self.single_entry_route)
         self.assertEqual(req_single.status_code, 200)
         self.assertIn('At Russia', str(req_single.data))
+
+    def test_modify_single_entry(self):
+        """ Test editing of single entry """
+
+        req = self.client().post(self.entry_route, data=self.entry)
+        req_single =  self.client().put(self.single_entry_route, data=self.entry_new)
+        self.assertEqual(req_single.status_code, 201)
+        self.assertIn('At Beach', str(req_single.data))

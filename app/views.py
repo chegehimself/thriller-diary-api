@@ -68,3 +68,21 @@ def fetch_single_entry(id):
             date_created = entry['created']
             response = {"status": "success", "entry": {"title":str(title), "description":str(description), "created":date_created}}    
             return response, 200
+
+@ent_bp.route('/entries/<int:id>', methods=['PUT'])
+def update_single_entry(id):
+    """ Edits a single entry """
+    # if there are no entries there is no need to do anything
+    if not entries:
+        return {"status": "Fail", "entry": {"Error":"That entry does not exist!"}}, 404
+    for entry in entries:
+        # check if the entry exists
+        if entry['id'] == id:
+            title = str(request.data.get('title', '')).strip()
+            description = str(request.data.get('description', ''))
+            entry['title'] = title
+            entry['description'] = description
+            date_created = entry['created']
+
+            response = {"status": "success", "entry": {"title":str(title), "description":str(description), "created":date_created}}    
+            return response, 201

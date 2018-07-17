@@ -30,6 +30,7 @@ class TestDiaryEntry(unittest.TestCase):
     	self.assertFalse(False, result)
 
     def test_get_all_entries(self):
+        """ Test fetch all entries """
         req = self.client().post(self.entry_route, data=self.entry)
         req_all =  self.client().get(self.entry_route)
         self.assertEqual(req_all.status_code, 200)
@@ -43,3 +44,8 @@ class TestDiaryEntry(unittest.TestCase):
             req = self.client().post(self.entry_route, data=self.entry)
             self.assertEqual(req.status_code, 201)
             self.assertIn('At Russia',str(req.data))
+
+    def test_landing_page_message(self):
+        """ Test Landing page message"""
+        req =  self.client().get('/api/v1/')
+        self.assertEqual(req.status_code, 200)

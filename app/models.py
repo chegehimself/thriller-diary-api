@@ -18,7 +18,15 @@ class Entry(object):
         if description and title:
             now = datetime.datetime.now()
             date_created = now.strftime("%Y-%m-%d %H:%M")
+
+            # entry id
+            entryId = 1
+            for i in self.entries:
+                entryId += 1
+                if i['id'] == entryId:
+                    entryId += 1
             single_entry_holder = dict()
+            single_entry_holder['id'] = entryId
             single_entry_holder['title'] = title
             single_entry_holder['description'] = description
             single_entry_holder['created'] = str(date_created)

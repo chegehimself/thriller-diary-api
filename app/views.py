@@ -47,7 +47,7 @@ def add_new_entry():
     # title = json_data['title']
     # description = json_data['description']
     ENTRY.add_entry(title,description)
-    response = {"status": "success", "entry": {str(title):str(description)}}
+    response = {"status": "success", "entry": {"title":str(title), "description":str(description)}}
     return jsonify(response), 201
 
 @ent_bp.route('/entries/<int:id>', methods=['GET'])
@@ -57,5 +57,5 @@ def fetch_single_entry(id):
         if entry['id'] == id:
             title = entry['title']
             description = entry['description'] 
-            response = {"status": "success", "entry": {str(title):str(description)}}    
+            response = {"status": "success", "entry": {"title":str(title), "description":str(description)}}    
             return response

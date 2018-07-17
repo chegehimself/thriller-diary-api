@@ -58,4 +58,4 @@ def fetch_single_entry(id):
             title = entry['title']
             description = entry['description'] 
             response = {"status": "success", "entry": {"title":str(title), "description":str(description)}}    
-            return response
+            return response, 200

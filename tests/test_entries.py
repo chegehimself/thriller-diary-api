@@ -37,6 +37,11 @@ class TestDiaryEntry(unittest.TestCase):
         req_all =  self.client().get(self.entry_route)
         self.assertEqual(req_all.status_code, 200)
         self.assertIn('At Russia', str(req_all.data))
+
+    def test_entries_contains_nothing(self):
+        """ Test fetch all entries """
+        req_all =  self.client().get(self.entry_route)
+        self.assertEqual(req_all.status_code, 200)
         
 
     def test_entry_creation(self):

@@ -49,3 +49,13 @@ def add_new_entry():
     ENTRY.add_entry(title,description)
     response = {"status": "success", "entry": {str(title):str(description)}}
     return jsonify(response), 201
+
+@ent_bp.route('/entries/<int:id>', methods=['GET'])
+def fetch_single_entry(id):
+    """ will return a single entry """
+    for entry in entries:
+        if entry['id'] == id:
+            title = entry['title']
+            description = entry['description'] 
+            response = {"status": "success", "entry": {str(title):str(description)}}    
+            return response

@@ -64,6 +64,12 @@ class TestDiaryEntry(unittest.TestCase):
         self.assertEqual(req_single.status_code, 200)
         self.assertIn('At Russia', str(req_single.data))
 
+    def test_fetch_single_entry(self):
+        """ Test fetch single entry """
+        req_single =  self.client().get(self.single_entry_route)
+        self.assertEqual(req_single.status_code, 404)
+        self.assertIn('At Russia', str(req_single.data))
+
     def test_modify_single_entry(self):
         """ Test editing of single entry """
 

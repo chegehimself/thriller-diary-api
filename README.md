@@ -41,6 +41,7 @@ The following is a list of available endpoints in this application
 |GET /api/v1/entries/<int:entryId>/     |Fetch a single entry|
 |POST /api/v1/entries               |Create an entry|
 |PUT /api/v1/entries/<int:entryId>/ |Modify an entry|
+|DELETE /api/v1/entries/<int:entryId>/ |Delete an entry|
 
 # Testing
 - comming soon...

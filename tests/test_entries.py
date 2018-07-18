@@ -105,3 +105,4 @@ class TestDeletion(unittest.TestCase):
         req = self.client().post(self.entry_route, data=self.entry)
         delete_req = self.client().delete(self.unavailable_id_route)
         self.assertEqual(delete_req.status_code, 404)
+        

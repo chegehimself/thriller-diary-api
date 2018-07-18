@@ -4,7 +4,7 @@
 
 from flask import Flask, Blueprint, jsonify, request, make_response
 
-
+import re
 # import models
 from app.models import Entry
 ENTRY = Entry()

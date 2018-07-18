@@ -19,7 +19,7 @@ entries_bp = Blueprint('entries',__name__, url_prefix='/api/v1')
 # deal with single entry
 ent_bp = Blueprint('ent', __name__, url_prefix='/api/v1')
 
-@entries_bp.route('/', methods=['POST', 'GET'])
+@entries_bp.route('/', methods=['GET'])
 def index():
     """ root """
     if request.method == 'GET':

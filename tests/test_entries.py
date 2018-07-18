@@ -20,6 +20,7 @@ class TestDiaryEntry(unittest.TestCase):
         self.entry_new = {'title':'At Beach', 'description':'Me and my three friends decided ...'}
         self.entry_route = 'api/v1/entries/'
         self.single_entry_route = 'api/v1/entries/1'
+        self.bad_url = '/api/v1/entries/not_available'
 
     def test_entry_adding_success(self):
         """returns True if entry addition was successful"""
@@ -64,12 +65,6 @@ class TestDiaryEntry(unittest.TestCase):
         self.assertEqual(req_single.status_code, 200)
         self.assertIn('At Russia', str(req_single.data))
 
-    def test_fetch_single_entry(self):
-        """ Test fetch single entry """
-        req_single =  self.client().get(self.single_entry_route)
-        self.assertEqual(req_single.status_code, 404)
-        self.assertIn('At Russia', str(req_single.data))
-
     def test_modify_single_entry(self):
         """ Test editing of single entry """
 
@@ -77,3 +72,7 @@ class TestDiaryEntry(unittest.TestCase):
         req_single =  self.client().put(self.single_entry_route, data=self.entry_new)
         self.assertEqual(req_single.status_code, 201)
         self.assertIn('At Beach', str(req_single.data))
+
+    def test_not_found_url(self):
+        req = self.client().get(self.bad_url)
+        self.assertEqual(req.status_code, 404)

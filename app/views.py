@@ -53,7 +53,13 @@ def add_new_entry():
 @ent_bp.route('/entries/<int:id>', methods=['GET'])
 def fetch_single_entry(id):
     """ will return a single entry """
+    # if there are no entries there is no need to do anything
+    if not entries:
+        return {"status": "Fail", "entry": {"Error":"That entry does not exist!"}}, 404
     for entry in entries:
+        # check if the entry exists
+        if id not in entries:
+            return {"status": "Fail", "entry": {"Error":"That entry does not exist!"}}, 404
         if entry['id'] == id:
             title = entry['title']
             description = entry['description']

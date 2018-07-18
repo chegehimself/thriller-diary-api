@@ -62,7 +62,7 @@ def fetch_single_entry(id):
         return {"status": "Fail", "entry": {"Error":"That entry does not exist!"}}, 404
     for entry in entries:
         # check if the entry exists
-        if id not in entries:
+        if entry['id'] != id:
             return {"status": "Fail", "entry": {"Error":"That entry does not exist!"}}, 404
         if entry['id'] == id:
             title = entry['title']

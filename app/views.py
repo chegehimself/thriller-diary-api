@@ -35,6 +35,10 @@ def index():
 def get_all_entries():
     """Retrives all Entries"""
     if request.method == 'GET':
+        # if there is nothing yet
+        if len(entries) == 0:
+            response = {"status": "success", "entries": "There are no entries for now"}
+            return response,200
         response = {"status": "success", "entries": entries}
         return jsonify(response), 200
 

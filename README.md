@@ -12,6 +12,28 @@ __[Live version](https://thriller-diary-api.herokuapp.com/api/v1)__
 
 __[Pivotal Tracker Stories](https://pivotaltracker.com/n/projects/2183778)__
 
+## folder structure
+```
+~/thriller-dairy-api
+  |__ /app   
+      |-- __init__.py
+      |-- models.py
+      |-- entries.py
+      |-- views.py
+  |__ /instance
+      |-- __init__.py
+      |-- config.py
+  |__ /instance
+      |-- __init__.py
+      |-- test_entries.py
+  |-- .gitignore
+  |--.travis.yml
+  |--LICENSE
+  |--Readme.md
+  |--requirements.txt
+  |--run.py
+```
+
 ### Local Installation
 
 Fork this repository to your github account and clone from there(_NB: clone from your github account - after forking_).This will help you to contribute to this project.
@@ -46,7 +68,9 @@ The following is a list of available endpoints in this application
 |DELETE /api/v1/entries/<int:entryId>/ |Delete an entry|
 
 # Testing
-- comming soon...
+```py
+py.test --cov=app
+```
 
 ### Contributing
 Create A Pull request to develop branch

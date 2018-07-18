@@ -56,6 +56,7 @@ def fetch_single_entry(id):
     for entry in entries:
         if entry['id'] == id:
             title = entry['title']
-            description = entry['description'] 
-            response = {"status": "success", "entry": {"title":str(title), "description":str(description)}}    
+            description = entry['description']
+            date_created = entry['created']
+            response = {"status": "success", "entry": {"title":str(title), "description":str(description), "created":date_created}}    
             return response, 200

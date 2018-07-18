@@ -8,7 +8,9 @@ An online journal where users can pen down their thoughts and feelings. This is 
 [![Maintainability](https://api.codeclimate.com/v1/badges/dcd92dcc85e867b53119/maintainability)](https://codeclimate.com/github/james-chege/thriller-diary-api/maintainability)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bc05f653d4b3470b84a41ca252d68cbd)](https://www.codacy.com/app/james-chege/thriller-diary?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=james-chege/thriller-diary&amp;utm_campaign=Badge_Grade)
 
-__Live version: [coming soon ...]()__
+__[Live version](https://thriller-diary-api.herokuapp.com/api/v1)__
+
+__[Pivotal Tracker Stories](https://pivotaltracker.com/n/projects/2183778)__
 
 ### Local Installation
 

@@ -23,7 +23,7 @@ __[Pivotal Tracker Stories](https://pivotaltracker.com/n/projects/2183778)__
   |__ /instance
       |-- __init__.py
       |-- config.py
-  |__ /instance
+  |__ /tests
       |-- __init__.py
       |-- test_entries.py
   |-- .gitignore

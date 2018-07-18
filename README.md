@@ -68,7 +68,7 @@ The following is a list of available endpoints in this application
 |DELETE /api/v1/entries/<int:entryId>/ |Delete an entry|
 
 # Testing
-```py
+```
 py.test --cov=app
 ```
 

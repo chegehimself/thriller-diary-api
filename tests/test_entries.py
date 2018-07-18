@@ -20,6 +20,7 @@ class TestDiaryEntry(unittest.TestCase):
         self.entry_new = {'title':'At Beach', 'description':'Me and my three friends decided ...'}
         self.entry_route = 'api/v1/entries/'
         self.single_entry_route = 'api/v1/entries/1'
+        self.unavailable_id_route = 'api/v1/entries/300'
         self.bad_url = '/api/v1/entries/not_available'
 
     def test_entry_adding_success(self):
@@ -74,5 +75,33 @@ class TestDiaryEntry(unittest.TestCase):
         self.assertIn('At Beach', str(req_single.data))
 
     def test_not_found_url(self):
+        """ Test for unavailable url request """
         req = self.client().get(self.bad_url)
         self.assertEqual(req.status_code, 404)
+
+class TestDeletion(unittest.TestCase):
+    """ To test deletions """
+    def setUp(self):
+        self.app = create_app(config_name="testing")
+        self.client = self.app.test_client
+        self.entry = {'title':'At Russia', 'description':'Me and my three friends decided ...'}
+        self.single_entry_route = 'api/v1/entries/1'
+        self.entry_route = 'api/v1/entries/'
+        self.unavailable_id_route = 'api/v1/entries/300'
+
+    def test_deletion_on_empty_entries(self):
+        """ Test for deletion on empty"""
+        req = self.client().delete(self.single_entry_route)
+        self.assertNotEqual(req.status_code, 404)
+    
+    def test_deletion_success(self):
+        """ test for successful entry deletion """
+        req = self.client().post(self.entry_route, data=self.entry)
+        delete_req = self.client().delete('api/v1/entries/2')
+        self.assertEqual(delete_req.status_code, 201)
+
+    def test_delete_fail_on_unavailable_id(self):
+        """ Test for deletion on unavailable entry """
+        req = self.client().post(self.entry_route, data=self.entry)
+        delete_req = self.client().delete(self.unavailable_id_route)
+        self.assertEqual(delete_req.status_code, 404)

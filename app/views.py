@@ -66,7 +66,8 @@ def fetch_single_entry(id):
             title = entry['title']
             description = entry['description']
             date_created = entry['created']
-            response = {"status": "success", "entry": {"title":str(title), "description":str(description), "created":date_created}}    
+            entry_id  = entry['id']
+            response = {"status": "success", "entry": {"id":entry_id, "title":str(title), "description":str(description), "created":date_created}}    
             return response, 200
 
 @ent_bp.route('/entries/<int:id>', methods=['PUT'])

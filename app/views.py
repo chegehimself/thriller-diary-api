@@ -29,7 +29,9 @@ def index():
                                     "Welcome":"Hey! welcome to thriller diary api"
                                     },
                                   ]}
-        return make_response(jsonify(welcome_message)), 200
+
+        response = {"status": "success", "Message": welcome_message}
+        return response,200
 
 @entries_bp.route('/entries', methods=['GET'])
 def get_all_entries():

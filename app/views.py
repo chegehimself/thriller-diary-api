@@ -86,3 +86,18 @@ def update_single_entry(id):
 
             response = {"status": "success", "entry": {"title":str(title), "description":str(description), "created":date_created}}    
             return response, 201
+
+@ent_bp.route('/entries/<int:id>', methods=['DELETE'])
+def delete_entry(id):
+    # if there are no entries there is no need to do anything
+    if not entries:
+        return {"status": "Fail", "entry": {"Error":"That entry does not exist!"}}, 404
+    for i, entry in  enumerate(entries):
+        # check if the entry exists
+        if entry['id'] == int(id):
+            title = entry['title']
+            description = entry['description']
+            date_created = entry['created']
+            entries.pop(i)
+            response = {"status": "success", "Deleted": {"title":str(title), "description":str(description), "created":date_created}}    
+            return response, 201

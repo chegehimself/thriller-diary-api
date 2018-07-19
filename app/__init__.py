@@ -33,6 +33,16 @@ def create_app(config_name):
         }
         response = jsonify(message)
         response.status_code = 404
-
         return response
+
+    @app.errorhandler(500)
+    def server_error(error=None):
+        response = {"status": 500, "Message":"Something went wrong!"}
+        return response,500
+
+    @app.errorhandler(405)
+    def method_not_allowed(error=None):
+        response = {"status": 405, "Message":"Method not allowed"}
+        return response,405
+        
     return app

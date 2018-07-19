@@ -79,6 +79,11 @@ class TestDiaryEntry(unittest.TestCase):
         req = self.client().get(self.bad_url)
         self.assertEqual(req.status_code, 404)
 
+    def test_error_405(self):
+        """ Test for Method Not allowed """
+        req = self.client().post(self.single_entry_route)
+        self.assertEqual(req.status_code, 405)
+
 class TestDeletion(unittest.TestCase):
     """ To test deletions """
     def setUp(self):
@@ -105,4 +110,11 @@ class TestDeletion(unittest.TestCase):
         req = self.client().post(self.entry_route, data=self.entry)
         delete_req = self.client().delete(self.unavailable_id_route)
         self.assertEqual(delete_req.status_code, 404)
-        
+
+class TestProductionError(unittest.TestCase):
+    def test_error_500(self):
+        """ Test for server error"""
+        self.app = create_app(config_name="production")
+        client = self.app.test_client
+        req = client().put('/api/v1/entries/1')
+        self.assertEqual(req.status_code, 500)

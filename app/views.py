@@ -1,10 +1,10 @@
 # app/views.py
 
 # contains routes
+import re
+from flask_restful import Api
 
 from flask import Flask, Blueprint, jsonify, request, make_response
-
-import re
 # import models
 from app.models import Entry
 ENTRY = Entry()
@@ -50,6 +50,18 @@ def add_new_entry():
     # json_data = request.get_json()
     title = str(request.data.get('title', '')).strip()
     description = str(request.data.get('description', ''))
+    # check empty title
+    if len(title) == 0:
+        response = {"message": "Please input data", "status": 401}
+        return jsonify(response), 401
+    # check empty description
+    if len(description) == 0:
+        return jsonify(response), 401
+        response = {"message": "Please input data","status": 401}
+    # check for special characters in title
+    if not re.match(r"^[a-zA-Z0-9_ -]*$", title):
+        response = {"message": "Please input valid title","status": 401}
+        return jsonify(response), 401
     # title = json_data['title']
     # description = json_data['description']
     ENTRY.add_entry(title,description)
@@ -63,7 +75,7 @@ def fetch_single_entry(id):
     if not entries:
         return {"status": "Fail", "entry": {"Error":"That entry does not exist!"}}, 404
     for entry in entries:
-        # check if the entry exists
+        # check if the entry exists and return
         if entry['id'] == id:
             title = entry['title']
             description = entry['description']

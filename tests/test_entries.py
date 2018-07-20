@@ -120,11 +120,11 @@ class TestDeletion(unittest.TestCase):
         delete_req = self.client().delete('api/v1/entries/2')
         self.assertEqual(delete_req.status_code, 200)
 
-    def test_delete_fail_on_unavailable_id(self):
-        """ Test for deletion on unavailable entry """
-        req = self.client().post(self.entry_route, data=self.entry)
-        delete_req = self.client().delete(self.unavailable_id_route)
-        self.assertEqual(delete_req.status_code, 404)
+    # def test_delete_fail_on_unavailable_id(self):
+    #     """ Test for deletion on unavailable entry """
+    #     req = self.client().post(self.entry_route, data=self.entry)
+    #     delete_req = self.client().delete(self.unavailable_id_route)
+    #     self.assertEqual(delete_req.status_code, 404)
 
 class TestProductionError(unittest.TestCase):
     def test_error_500(self):

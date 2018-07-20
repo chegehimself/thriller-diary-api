@@ -52,12 +52,12 @@ def add_new_entry():
     description = str(request.data.get('description', ''))
     # check empty title
     if len(title) == 0:
-        response = {"message": "Please input data", "status": 401}
+        response = {"message": "Please input title", "status": 401}
         return jsonify(response), 401
     # check empty description
     if len(description) == 0:
         return jsonify(response), 401
-        response = {"message": "Please input data","status": 401}
+        response = {"message": "Please input description","status": 401}
     # check for special characters in title
     if not re.match(r"^[a-zA-Z0-9_ -]*$", title):
         response = {"message": "Please input valid title","status": 401}
@@ -97,11 +97,11 @@ def update_single_entry(id):
             description = str(request.data.get('description', ''))
             # check for empty title
             if len(title) == 0:
-                response = {"message": "Please input data", "status": 401}
+                response = {"message": "Please input title", "status": 401}
                 return jsonify(response), 401
             # check for empty description
             if len(description) == 0:
-                response = {"message": "Please input data","status": 401}
+                response = {"message": "Please input description","status": 401}
                 return jsonify(response), 401
             # check for special characters in title
             if not re.match(r"^[a-zA-Z0-9_ -]*$", title):

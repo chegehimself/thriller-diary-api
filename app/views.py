@@ -129,4 +129,4 @@ def delete_entry(id):
             date_created = entry['created']
             entries.pop(i)
             response = {"status": "success", "Deleted": {"title":str(title), "description":str(description), "created":date_created}}    
-            return response, 201
+            return response, 200

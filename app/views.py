@@ -120,8 +120,6 @@ def delete_entry(id):
     if not entries:
         return {"status": "Fail", "entry": {"Error":"That entry does not exist!"}}, 404
     for i, entry in  enumerate(entries):
-        if entry['id'] != id:
-            return {"status": "Fail", "entry": {"Error":"That entry does not exist!"}}, 404
         # check if the entry exists
         if entry['id'] == int(id):
             title = entry['title']

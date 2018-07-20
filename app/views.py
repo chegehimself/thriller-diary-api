@@ -95,6 +95,18 @@ def update_single_entry(id):
         if entry['id'] == id:
             title = str(request.data.get('title', '')).strip()
             description = str(request.data.get('description', ''))
+            # check for empty title
+            if len(title) == 0:
+                response = {"message": "Please input data", "status": 401}
+                return jsonify(response), 401
+            # check for empty description
+            if len(description) == 0:
+                response = {"message": "Please input data","status": 401}
+                return jsonify(response), 401
+            # check for special characters in title
+            if not re.match(r"^[a-zA-Z0-9_ -]*$", title):
+                response = {"message": "Please input valid title","status": 401}
+                return jsonify(response), 401
             entry['title'] = title
             entry['description'] = description
             date_created = entry['created']

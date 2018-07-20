@@ -81,3 +81,13 @@ Create A Pull request to develop branch
 ### License
 
 This app is licensed under MIT [LICENSE](LICENSE)
+
+#Demo
+
+![successful_entry_addition](https://user-images.githubusercontent.com/29597869/43003422-1f59ac98-8c35-11e8-9dc0-9caaea912cf4.png)
+![fetch_all_entries](https://user-images.githubusercontent.com/29597869/43003416-1e447ef0-8c35-11e8-8a72-dd3b2c25bf35.png)
+![fetch_a_single_entry](https://user-images.githubusercontent.com/29597869/43003415-1e00be36-8c35-11e8-9a81-9cd64987c9ab.png)
+![index](https://user-images.githubusercontent.com/29597869/43003418-1e90e5ba-8c35-11e8-8a38-317aeabf2a5a.png)
+![modify_a_single_entry](https://user-images.githubusercontent.com/29597869/43003419-1ede034a-8c35-11e8-8e72-cbb20a2c28d3.png)
+![delete_a_single_entry](https://user-images.githubusercontent.com/29597869/43003414-1db50f04-8c35-11e8-923e-aac3d46ee4e2.png)
+

@@ -56,8 +56,8 @@ def add_new_entry():
         return jsonify(response), 401
     # check empty description
     if len(description) == 0:
-        return jsonify(response), 401
         response = {"message": "Please input description","status": 401}
+        return jsonify(response), 401
     # check for special characters in title
     if not re.match(r"^[a-zA-Z0-9_ -]*$", title):
         response = {"message": "Please input valid title","status": 401}

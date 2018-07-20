@@ -18,6 +18,9 @@ class TestDiaryEntry(unittest.TestCase):
         self.client = self.app.test_client
         self.entry = {'title':'At Russia', 'description':'Me and my three friends decided ...'}
         self.entry_new = {'title':'At Beach', 'description':'Me and my three friends decided ...'}
+        self.entry_bad_title = {'title':'$', 'description':'Me and my three friends decided ...'}
+        self.entry_no_title = {'title':'', 'description':'Me and my three friends decided ...'}
+        self.entry_no_description = {'title':'At Beach', 'description':''}
         self.entry_route = 'api/v1/entries/'
         self.single_entry_route = 'api/v1/entries/1'
         self.unavailable_id_route = 'api/v1/entries/300'
@@ -51,6 +54,12 @@ class TestDiaryEntry(unittest.TestCase):
         # bind the app to the current context
         with self.app.app_context():
             req = self.client().post(self.entry_route, data=self.entry)
+            req2 = self.client().post(self.entry_route, data=self.entry_bad_title)
+            req3 = self.client().post(self.entry_route, data=self.entry_no_description)
+            req4 = self.client().post(self.entry_route, data=self.entry_no_title)
+            self.assertEqual(req2.status_code, 401)
+            self.assertEqual(req3.status_code, 401)
+            self.assertEqual(req4.status_code, 401)
             self.assertEqual(req.status_code, 201)
             self.assertIn('At Russia',str(req.data))
 
@@ -71,6 +80,12 @@ class TestDiaryEntry(unittest.TestCase):
 
         req = self.client().post(self.entry_route, data=self.entry)
         req_single =  self.client().put(self.single_entry_route, data=self.entry_new)
+        req2 = self.client().put(self.single_entry_route, data=self.entry_bad_title)
+        req3 = self.client().put(self.single_entry_route, data=self.entry_no_description)
+        req4 = self.client().put(self.single_entry_route, data=self.entry_no_title)
+        self.assertEqual(req2.status_code, 401)
+        self.assertEqual(req3.status_code, 401)
+        self.assertEqual(req4.status_code, 401)
         self.assertEqual(req_single.status_code, 201)
         self.assertIn('At Beach', str(req_single.data))
 
@@ -103,7 +118,7 @@ class TestDeletion(unittest.TestCase):
         """ test for successful entry deletion """
         req = self.client().post(self.entry_route, data=self.entry)
         delete_req = self.client().delete('api/v1/entries/2')
-        self.assertEqual(delete_req.status_code, 201)
+        self.assertEqual(delete_req.status_code, 200)
 
     def test_delete_fail_on_unavailable_id(self):
         """ Test for deletion on unavailable entry """

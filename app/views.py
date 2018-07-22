@@ -4,7 +4,7 @@ contains routes
 """
 import re
 
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request
 # import models
 from app.models import Entry
 ENTRY = Entry()
@@ -52,22 +52,22 @@ def add_new_entry():
     # check empty title
     if not title:
         response = {"message": "Please input title", "status": 401}
-        return jsonify(response), 401
+        return response, 401
     # check empty description
     if not description:
         response = {"message": "Please input description", "status": 401}
-        return jsonify(response), 401
+        return response, 401
     # check for special characters in title
     if not re.match(r"^[a-zA-Z0-9_ -]*$", title):
         response = {"message": "Please input valid title", "status": 401}
-        return jsonify(response), 401
+        return response, 401
     # title = json_data['title']
     # description = json_data['description']
     ENTRY.add_entry(title, description)
     response = {"status": "success", "entry": {"title":str(title), "description":str(description)}}
-    return jsonify(response), 201
+    return response, 201
 
-@ENTRIES_BP.route('/entries/<int:id_entry>', methods=['GET'])
+@ENT_BP.route('/entries/<int:id_entry>', methods=['GET'])
 def fetch_single_entry(id_entry):
     """ will return a single entry """
     # if there are no entries there is no need to do anything
@@ -88,7 +88,7 @@ def fetch_single_entry(id_entry):
                                               }}
             return response, 200
 
-@ENTRIES_BP.route('/entries/<int:id_entry>', methods=['PUT'])
+@ENT_BP.route('/entries/<int:id_entry>', methods=['PUT'])
 def update_single_entry(id_entry):
     """ Edits a single entry """
     # if there are no entries there is no need to do anything
@@ -102,15 +102,15 @@ def update_single_entry(id_entry):
             # check for empty title
             if not title:
                 response = {"message": "Please input title", "status": 401}
-                return jsonify(response), 401
+                return response, 401
             # check for empty description
             if not description:
                 response = {"message": "Please input description", "status": 401}
-                return jsonify(response), 401
+                return response, 401
             # check for special characters in title
             if not re.match(r"^[a-zA-Z0-9_ -]*$", title):
                 response = {"message": "Please input valid title", "status": 401}
-                return jsonify(response), 401
+                return response, 401
             entry['title'] = title
             entry['description'] = description
             date_created = entry['created']
@@ -122,7 +122,7 @@ def update_single_entry(id_entry):
                           "created":date_created}}
             return response, 201
 
-@ENTRIES_BP.route('/entries/<int:entry_id>', methods=['DELETE'])
+@ENT_BP.route('/entries/<int:entry_id>', methods=['DELETE'])
 def delete_entry(entry_id):
     """ To delete a certain entry """
     # if there are no entries there is no need to do anything

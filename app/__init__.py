@@ -7,7 +7,7 @@ from flask_cors import CORS
 # local import
 from instance.config import app_config
 from app.models import Entry
-from entries.views import ENTRIES_BP, ENT_BP
+from . entries.views import ENTRIES_BP, ENT_BP
 
 def create_app(config_name):
     """ creates the app with the desired environment """

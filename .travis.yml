@@ -14,9 +14,6 @@ before_script:
 # start test
 script:
   - py.test --cov=app
-  - py.test --cov=entries
-  - py.test --cov=instance
-  - py.test --cov=tests
 # send info to coveralls
 after_success:
    coveralls

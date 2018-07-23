@@ -38,7 +38,8 @@ class TestDiaryEntry(unittest.TestCase):
 
     def test_get_all_entries(self):
         """ Test fetch all entries """
-        req = self.client().post(self.entry_route, data=self.entry)
+        # Not neccessary to use the following variable so pylint unused variable warning is disabled
+        req = self.client().post(self.entry_route, data=self.entry) # pylint: disable=unused-variable
         req_all = self.client().get(self.entry_route)
         self.assertEqual(req_all.status_code, 200)
         self.assertIn('At Russia', str(req_all.data))
@@ -69,15 +70,16 @@ class TestDiaryEntry(unittest.TestCase):
 
     def test_fetch_single_entry(self):
         """ Test fetch single entry """
-        req = self.client().post(self.entry_route, data=self.entry)
+        # Not neccessary to use the following variable so pylint unused variable warning is disabled
+        req = self.client().post(self.entry_route, data=self.entry) # pylint: disable=unused-variable
         req_single = self.client().get(self.single_entry_route)
         self.assertEqual(req_single.status_code, 200)
         self.assertIn('At Russia', str(req_single.data))
 
     def test_modify_single_entry(self):
         """ Test editing of single entry """
-
-        req = self.client().post(self.entry_route, data=self.entry)
+         # Not neccessary to use the following variable so pylint unused variable warning is disabled
+        req = self.client().post(self.entry_route, data=self.entry) # pylint: disable=unused-variable
         req_single = self.client().put(self.single_entry_route, data=self.entry_new)
         req2 = self.client().put(self.single_entry_route, data=self.entry_bad_title)
         req3 = self.client().put(self.single_entry_route, data=self.entry_no_description)
@@ -100,7 +102,7 @@ class TestDiaryEntry(unittest.TestCase):
 
 class TestDeletion(unittest.TestCase):
     """ To test deletions """
-    def setUp(self):
+    def setUp(self):# pylint: disable=unused-variable
         self.app = create_app(config_name="testing")
         self.client = self.app.test_client
         self.entry = {'title':'At Russia', 'description':'Me and my three friends decided ...'}
@@ -115,7 +117,8 @@ class TestDeletion(unittest.TestCase):
 
     def test_deletion_success(self):
         """ test for successful entry deletion """
-        req = self.client().post(self.entry_route, data=self.entry)
+        # Not neccessary to use the following variable so pylint unused variable warning is disabled
+        req = self.client().post(self.entry_route, data=self.entry) # pylint: disable=unused-variable
         delete_req = self.client().delete('api/v1/entries/2')
         self.assertEqual(delete_req.status_code, 200)
 

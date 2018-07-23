@@ -5,7 +5,7 @@ from flask import request, jsonify
 from flask_api import FlaskAPI
 from flask_cors import CORS
 # local import
-from instance.config import app_config
+from instance.config import APP_CONFIG
 from app.models import Entry
 from . entries.views import ENTRIES_BP, ENT_BP
 
@@ -14,7 +14,7 @@ def create_app(config_name):
     # instantiate flask app
     app = FlaskAPI(__name__, instance_relative_config=True)
     # app settings config
-    app.config.from_object(app_config[config_name])
+    app.config.from_object(APP_CONFIG[config_name])
     app.config.from_pyfile('config.py')
     # for cross origin resource sharing
     CORS(app)

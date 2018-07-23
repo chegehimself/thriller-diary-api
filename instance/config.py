@@ -27,7 +27,7 @@ class TestConfig(Config):
     TESTING = True
     DEBUG = True
 
-app_config = {
+APP_CONFIG = {
     'development': DevelopmentConfig,
     'production': ProductionConfig,
     'testing': TestConfig,

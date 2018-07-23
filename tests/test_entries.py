@@ -102,7 +102,7 @@ class TestDiaryEntry(unittest.TestCase):
 
 class TestDeletion(unittest.TestCase):
     """ To test deletions """
-    def setUp(self):# pylint: disable=unused-variable
+    def setUp(self):
         self.app = create_app(config_name="testing")
         self.client = self.app.test_client
         self.entry = {'title':'At Russia', 'description':'Me and my three friends decided ...'}

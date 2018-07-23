@@ -9,7 +9,6 @@ import unittest
 from app import create_app
 # import Entry classe from models
 from app.models import Entry
-from flask import jsonify
 
 class TestDiaryEntry(unittest.TestCase):
     """test for successful and unsuccessful entry addition"""
@@ -33,22 +32,21 @@ class TestDiaryEntry(unittest.TestCase):
         self.assertEqual(True, result)
 
     def test_entry_adding_failure(self):
-    	"""returns False if an entry addition failed"""
-    	result = self.ent.add_entry("title", "")
-    	self.assertFalse(False, result)
+        """returns False if an entry addition failed"""
+        result = self.ent.add_entry("title", "")
+        self.assertEqual(False, result)
 
     def test_get_all_entries(self):
         """ Test fetch all entries """
         req = self.client().post(self.entry_route, data=self.entry)
-        req_all =  self.client().get(self.entry_route)
+        req_all = self.client().get(self.entry_route)
         self.assertEqual(req_all.status_code, 200)
         self.assertIn('At Russia', str(req_all.data))
 
     def test_entries_contains_nothing(self):
         """ Test fetch all entries """
-        req_all =  self.client().get(self.entry_route)
+        req_all = self.client().get(self.entry_route)
         self.assertEqual(req_all.status_code, 200)
-        
 
     def test_entry_creation(self):
         """Test entry creation via post method"""
@@ -62,17 +60,17 @@ class TestDiaryEntry(unittest.TestCase):
             self.assertEqual(req3.status_code, 401)
             self.assertEqual(req4.status_code, 401)
             self.assertEqual(req.status_code, 201)
-            self.assertIn('At Russia',str(req.data))
+            self.assertIn('At Russia', str(req.data))
 
     def test_landing_page_message(self):
         """ Test Landing page message"""
-        req =  self.client().get('/api/v1/')
+        req = self.client().get('/api/v1/')
         self.assertEqual(req.status_code, 200)
 
     def test_fetch_single_entry(self):
         """ Test fetch single entry """
         req = self.client().post(self.entry_route, data=self.entry)
-        req_single =  self.client().get(self.single_entry_route)
+        req_single = self.client().get(self.single_entry_route)
         self.assertEqual(req_single.status_code, 200)
         self.assertIn('At Russia', str(req_single.data))
 
@@ -80,7 +78,7 @@ class TestDiaryEntry(unittest.TestCase):
         """ Test editing of single entry """
 
         req = self.client().post(self.entry_route, data=self.entry)
-        req_single =  self.client().put(self.single_entry_route, data=self.entry_new)
+        req_single = self.client().put(self.single_entry_route, data=self.entry_new)
         req2 = self.client().put(self.single_entry_route, data=self.entry_bad_title)
         req3 = self.client().put(self.single_entry_route, data=self.entry_no_description)
         req4 = self.client().put(self.single_entry_route, data=self.entry_no_title)
@@ -114,7 +112,7 @@ class TestDeletion(unittest.TestCase):
         """ Test for deletion on empty"""
         req = self.client().delete(self.single_entry_route)
         self.assertNotEqual(req.status_code, 404)
-    
+
     def test_deletion_success(self):
         """ test for successful entry deletion """
         req = self.client().post(self.entry_route, data=self.entry)
@@ -128,9 +126,11 @@ class TestDeletion(unittest.TestCase):
     #     self.assertEqual(delete_req.status_code, 404)
 
 class TestProductionError(unittest.TestCase):
+    """Test Server error in production environemnt """
+    def setUp(self):
+        self.app = create_app(config_name="production")
+        self.client = self.app.test_client
     def test_error_500(self):
         """ Test for server error"""
-        self.app = create_app(config_name="production")
-        client = self.app.test_client
-        req = client().put('/api/v1/entries/1')
+        req = self.client().put('/api/v1/entries/1')
         self.assertEqual(req.status_code, 500)

@@ -1,10 +1,11 @@
+"""
 # tests/test_entries.py
 
 # For unit testing of entries
 
 # standard unittest
+"""
 import unittest
-import json
 from app import create_app
 # import Entry classe from models
 from app.models import Entry

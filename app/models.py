@@ -1,12 +1,11 @@
-# app/models.py
-
-# contains models for the app
-
+"""
+app/models.py
+contains models for the app
+"""
 import datetime
 
 class Entry(object):
     """Add new entry"""
-
     # constructor
     def __init__(self):
         # all entries placeholder
@@ -20,13 +19,13 @@ class Entry(object):
             date_created = now.strftime("%Y-%m-%d %H:%M")
 
             # entry id
-            entryId = 1
+            entry_id = 1
             for i in self.entries:
-                entryId += 1
-                if i['id'] == entryId:
-                    entryId += 1
+                entry_id += 1
+                if i['id'] == entry_id:
+                    entry_id += 1
             single_entry_holder = dict()
-            single_entry_holder['id'] = entryId
+            single_entry_holder['id'] = entry_id
             single_entry_holder['title'] = title
             single_entry_holder['description'] = description
             single_entry_holder['created'] = str(date_created)

@@ -13,7 +13,7 @@ before_script:
   - export APP_SETTINGS="development"
 # start test
 script:
-   py.test --cov
+   py.test --ignore=/ --cov
 # send info to coveralls
 after_success:
    coveralls
